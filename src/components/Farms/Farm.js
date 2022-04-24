@@ -210,9 +210,9 @@ const Farm = ({ expandable }) => {
           </Typography>
         )}
         <Typography className={classes.farmComposition}>
-          {farm.name} ≈ $
+          1 {farm.name} ≈ $
           {priceProvider.lpPrices && priceProvider.lpPrices[farm.pid]
-            ? toFixedSpecial(priceProvider.lpPrices[farm.pid], 11)
+            ? formatLongNumber(priceProvider.lpPrices[farm.pid], 2)
             : 0}
         </Typography>
         <Typography className={classes.farmComposition}>

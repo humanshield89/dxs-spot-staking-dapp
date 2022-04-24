@@ -22,7 +22,7 @@ export const DXSProvider = ({ children }) => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(performance.now()), 10000);
+    const interval = setInterval(() => setTime(performance.now()), 60000);
     return () => {
       clearInterval(interval);
     };

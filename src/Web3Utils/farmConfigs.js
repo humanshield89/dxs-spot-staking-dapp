@@ -90,7 +90,7 @@ const mainNetFarms = {
         address: "0x7bC2c5A6945D13715E802EcDcbD5E0fDE177692A",
         symbol: "DXS-USDT",
         name: "DXS-USDT LP",
-        icon: icons.dxsBNB,
+        icon: icons.dxsUsdt,
         decimals: 18,
       },
       weight: 50, // lp token is 50% 50%
@@ -107,7 +107,7 @@ const mainNetFarms = {
         address: "0x33Ee77E1Db9a34a520A897c62242C9C6D319Aeb6",
         symbol: "DXS-BUSD",
         name: "DXS-BUSD LP",
-        icon: icons.dxsBNB,
+        icon: icons.dxsBusd,
         decimals: 18,
       },
       weight: 50, // lp token is 50% 50%

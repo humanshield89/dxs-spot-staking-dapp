@@ -5,7 +5,7 @@ const icons = {
   busd: "token-icons/usdt.gif",
   dxsBusd: "token-icons/DXSBUSD.png",
   dxsBNB: "token-icons/DXSBNB.png",
-  dxsUsdt: "token-icons/DXSUSDT.gif",
+  dxsUsdt: "token-icons/DXSUSDT.png",
 };
 
 module.exports = icons;
