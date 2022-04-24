@@ -27,10 +27,6 @@ const FarmsList = ({ value }) => {
   }, [farms, farmConfig]);
 
   useEffect(() => {
-    console.log(JSON.stringify(globalFarmStats));
-  }, [farms, globalFarmStats]);
-
-  useEffect(() => {
     setFarmObjects(
       farmConfig.farms.map((farm) => {
         return (

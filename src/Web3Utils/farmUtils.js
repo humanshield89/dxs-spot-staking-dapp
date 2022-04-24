@@ -92,8 +92,6 @@ export const getUserPending = async (provider, contractAddress, pid, user) => {
  *   of rewards pending for this user
  */
 export const getPoolInfo = async (provider, contractAddress, pid) => {
-  console.log("contractAddress = " + contractAddress);
-  console.log("pid = " + pid);
   const realContract = await getRealContract(
     contractAddress,
     provider,

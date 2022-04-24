@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { PricesProvider } from "../../contexts/PricesContext";
-import { testNetFarms } from "../../Web3Utils/farmConfigs";
+import { currentFarmConfigs } from "../../Web3Utils/farmConfigs";
 import { FarmsProvider } from "../../contexts/FarmsContext";
 import FarmsList from "../../components/Farms/FarmList";
 
@@ -28,8 +28,8 @@ const Farms = () => {
         alignItems="center"
       >
         <Grid item xs={12}>
-          <PricesProvider farmConfig={testNetFarms}>
-            <FarmsProvider farmConfig={testNetFarms}>
+          <PricesProvider farmConfig={currentFarmConfigs}>
+            <FarmsProvider farmConfig={currentFarmConfigs}>
               <FarmsList />
             </FarmsProvider>
           </PricesProvider>

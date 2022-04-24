@@ -1,5 +1,5 @@
 import BigNumber from "bignumber.js";
-import { getEndTime, getPoolInfo } from "./farmUtils";
+import { getEndTime, getPoolInfo, getStartTime } from "./farmUtils";
 import { getRealContract } from "./generalUtils";
 import { FarmAbi } from "./Abi/FarmAbi";
 const { rpcUrl, chainId } = require("../utils/config");
@@ -33,7 +33,6 @@ export const getFarms = async (
 
   for (let i = 0; i < farmConfig.farms.length; i++) {
     const farm = farmConfig.farms[i];
-    console.log("farm = " + farm);
     pools[i] = await getFarmDetails(
       farm,
       rewardsPerSecond,
@@ -45,7 +44,6 @@ export const getFarms = async (
       rewardTokenDecimals
     );
   }
-  console.log(pools);
   return pools;
 };
 /**
@@ -70,33 +68,28 @@ export const getFarmDetails = async (
   rewardTokenPrice,
   rewardTokenDecimals
 ) => {
-  console.log("totalMultipliers = " + totalMultipliers);
-
   let pool = await getPoolInfo(provider, farmAddress, farm.pid);
-  console.log("pool.stakedAmount = " + pool.stakedAmount);
 
   const poolDistPerSecond =
     (pool.multiplier / totalMultipliers) * rewardsPerSecond;
-  console.log("poolDistPerSecond = " + poolDistPerSecond);
-  console.log("rewardTokenPrice = " + rewardTokenPrice);
 
   const rewardsValuePerYear =
     (poolDistPerSecond * YEAR_SECONDS * rewardTokenPrice) /
     10 ** rewardTokenDecimals;
-  console.log("rewardsValuePerYear = " + rewardsValuePerYear);
   const active = (await getEndTime(provider, farmAddress)) > Date.now() / 1000;
   const totalStakedValue =
     (pool.stakedAmount * lpTokenPrice) / 10 ** farm.stakedToken.decimals;
-  console.log("totalStakedValue = " + totalStakedValue);
 
-  console.log("active = " + active);
-  const apy =
+  let apy =
     pool.stakedAmount == 0
       ? 999999999
       : active
       ? (rewardsValuePerYear * 100) / totalStakedValue
       : new BigNumber("0");
-  console.log("apy = " + apy);
+
+  const startTime = await getStartTime(provider, farmAddress);
+  if (startTime > Date.now() / 1000) apy = 0;
+
   return {
     ...farm,
     ...pool,

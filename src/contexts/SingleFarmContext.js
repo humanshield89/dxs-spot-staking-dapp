@@ -148,11 +148,7 @@ export const SingleFarmProvider = ({ pid, children }) => {
         wallet.account
       );
 
-      console.log("staked + " + staked);
-      console.log("farm.totalStaked = " + farm.totalStaked);
-
       const myShareRatio = Number(staked) / Number(farm.totalStaked);
-      console.log("myShareRatio = " + myShareRatio);
       userInfo = {
         pid: pid,
         staked: staked,
@@ -174,7 +170,6 @@ export const SingleFarmProvider = ({ pid, children }) => {
         deposits,
       };
     }
-    console.log("userInfo.pending = " + userInfo.pending);
     setUserInfo(userInfo);
   };
 

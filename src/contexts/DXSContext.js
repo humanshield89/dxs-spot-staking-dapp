@@ -73,14 +73,12 @@ export const DXSProvider = ({ children }) => {
       configs.lpPairAddress,
       await getEthProvider()
     );
-    console.log(priceInBNB);
     const bnbPrice = await getToken0PriceInToken1(
       configs.wBNB,
       configs.usdc,
       configs.usdcBNBPair,
       await getEthProvider()
     );
-    console.log(bnbPrice);
     setBnbPrice(bnbPrice);
 
     setDXSPrice(bnbPrice * priceInBNB);

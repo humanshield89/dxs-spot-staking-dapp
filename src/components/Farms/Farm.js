@@ -118,11 +118,6 @@ export const ViewOnExplorerButton = ({ txHash }) => {
 };
 
 const FarmStatItem = ({ classes, title, value, unit, formatNumber = true }) => {
-  useEffect(() => {
-    console.log("=========================");
-    console.log("title = " + title);
-    console.log("value = " + value);
-  }, []);
   return (
     <Grid
       item
@@ -266,7 +261,7 @@ const Farm = ({ expandable }) => {
           classes={classes}
           title={"My Weekly Rewards"}
           value={
-            userInfo?.shareRatio
+            userInfo
               ? Number(
                   globalFarmStats.rewardsPerSecond *
                     weekInSeconds *
@@ -275,7 +270,7 @@ const Farm = ({ expandable }) => {
                 10 ** dxs.dxsDecimals
               : "connect wallet"
           }
-          unit={userInfo?.shareRatio ? " DXS" : ""}
+          unit={userInfo ? " DXS" : ""}
           formatNumber={!!userInfo?.shareRatio}
         />
         {/*Staked Balance*/}
@@ -395,9 +390,9 @@ const Farm = ({ expandable }) => {
             )}
             {
               <Typography className={classes.farmComposition}>
-                <p
+                <Box
                   style={{
-                    color: "#2C3045",
+                    color: "gray",
                     cursor: "pointer",
                     textDecoration: "underline",
                   }}
@@ -405,7 +400,7 @@ const Farm = ({ expandable }) => {
                 >
                   {" "}
                   Refresh{" "}
-                </p>
+                </Box>
               </Typography>
             }
           </Grid>

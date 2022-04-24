@@ -7,25 +7,9 @@ export const FarmAbi = [
         type: "address",
       },
       { internalType: "address", name: "owner_", type: "address" },
-      { internalType: "address", name: "feeCollector_", type: "address" },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "user", type: "address" },
-      { indexed: true, internalType: "uint256", name: "pid", type: "uint256" },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "ClaimLPRewards",
-    type: "event",
   },
   {
     anonymous: false,
@@ -114,46 +98,6 @@ export const FarmAbi = [
   {
     anonymous: false,
     inputs: [
-      { indexed: true, internalType: "address", name: "user", type: "address" },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "poolId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "penaltyAmount",
-        type: "uint256",
-      },
-    ],
-    name: "PaidEarlyPenalty",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "user", type: "address" },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "poolId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "PaidStakeFee",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
       {
         indexed: false,
         internalType: "address",
@@ -226,27 +170,10 @@ export const FarmAbi = [
     type: "event",
   },
   {
-    anonymous: false,
-    inputs: [
-      { indexed: true, internalType: "address", name: "user", type: "address" },
-      { indexed: true, internalType: "uint256", name: "pid", type: "uint256" },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "WithdrawWithPenalty",
-    type: "event",
-  },
-  {
     inputs: [
       { internalType: "contract IERC20", name: "lpToken_", type: "address" },
       { internalType: "uint256", name: "multiplier_", type: "uint256" },
-      { internalType: "uint256", name: "depositFee_", type: "uint256" },
       { internalType: "uint256", name: "lockPeriodInDays_", type: "uint256" },
-      { internalType: "uint256", name: "earlyUnlockPenalty_", type: "uint256" },
     ],
     name: "addPool",
     outputs: [],
@@ -263,15 +190,6 @@ export const FarmAbi = [
     type: "function",
   },
   {
-    inputs: [
-      { internalType: "address", name: "newfeeCollector_", type: "address" },
-    ],
-    name: "changefeeCollector",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [{ internalType: "uint256", name: "poolPid_", type: "uint256" }],
     name: "emergencyWithdraw",
     outputs: [],
@@ -282,13 +200,6 @@ export const FarmAbi = [
     inputs: [],
     name: "endTime",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "feeCollector",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
     stateMutability: "view",
     type: "function",
   },
@@ -401,9 +312,7 @@ export const FarmAbi = [
       { internalType: "uint256", name: "lastRewardTime", type: "uint256" },
       { internalType: "uint256", name: "accERC20PerShare", type: "uint256" },
       { internalType: "uint256", name: "stakedAmount", type: "uint256" },
-      { internalType: "uint256", name: "stakeFee", type: "uint256" },
       { internalType: "uint256", name: "lockPeriod", type: "uint256" },
-      { internalType: "uint256", name: "penalty", type: "uint256" },
     ],
     stateMutability: "view",
     type: "function",
@@ -533,16 +442,6 @@ export const FarmAbi = [
   {
     inputs: [],
     name: "unPause",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "uint256", name: "poolPid_", type: "uint256" },
-      { internalType: "uint256", name: "userDepositIndex_", type: "uint256" },
-    ],
-    name: "unstakeWithPenalty",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

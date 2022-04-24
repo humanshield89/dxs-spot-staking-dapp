@@ -1,7 +1,7 @@
 import icons from "./tokenIcons";
 const { FarmAbi } = require("./Abi/FarmAbi");
 
-export const testNetFarms = {
+const testNetFarms = {
   // TODO put bsc farms here once deployed
   address: "0x7e2b6Ab86E9D9fd120d3B11c5675Aaab614Ee260",
   allowEmergencyUnstake: true, // only shows when farm is paused users will be able to widthraw without penalty all their funds but forfeit the rewards
@@ -61,9 +61,10 @@ export const testNetFarms = {
   ],
 };
 
-export const mainNetFarms = {
+const mainNetFarms = {
   // TODO put bsc farms here once deployed
-  address: "",
+  address: "0x7E7C731a6e2D24FD0ea002de7eF1cDBBB6042852",
+  allowEmergencyUnstake: true, // only shows when farm is paused users will be able to widthraw without penalty all their funds but forfeit the rewards
   abi: FarmAbi,
   farms: [
     {
@@ -86,7 +87,7 @@ export const mainNetFarms = {
     {
       name: "DXS-USDT",
       stakedToken: {
-        address: "0x33Ee77E1Db9a34a520A897c62242C9C6D319Aeb6",
+        address: "0x7bC2c5A6945D13715E802EcDcbD5E0fDE177692A",
         symbol: "DXS-USDT",
         name: "DXS-USDT LP",
         icon: icons.dxsBNB,
@@ -119,3 +120,5 @@ export const mainNetFarms = {
     },
   ],
 };
+
+export const currentFarmConfigs = mainNetFarms;

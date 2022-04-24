@@ -9,7 +9,7 @@ const configs = {
 
   lpPairAddress: "0x89F4B8c9d80520798f2d898202ec604e140C9AA6", // put DXS-BNB pair address here
   busdPair: "0x33Ee77E1Db9a34a520A897c62242C9C6D319Aeb6",
-  usdtPair: "0x33Ee77E1Db9a34a520A897c62242C9C6D319Aeb6",
+  usdtPair: "0x7bC2c5A6945D13715E802EcDcbD5E0fDE177692A",
 
   wBNB: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
   usdc: "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
@@ -78,4 +78,4 @@ const kovanConfigs = {
   },
 };
 
-module.exports = kovanConfigs; //configs;
+module.exports = configs; //configs;

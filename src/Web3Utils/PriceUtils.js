@@ -43,7 +43,6 @@ export const getToken0PriceInToken1 = async (
     Number(token1Balance) /
     Number(10 ** token1Decimals) /
     (Number(token0Balance) / Number(10 ** token0Decimals));
-  console.log("price for " + token0Address + " = " + price);
   return price;
 };
 
@@ -102,7 +101,6 @@ export const getLPPrice = async (
   );
   const decimals = await getDecimals(weightedTokenContract);
   const LPdecimals = await getDecimals(lpContract);
-  console.log(decimals);
   const totalWeightedTpokenValue = amountofWeightedToken
     .times(priceOfWeightedToken)
     .div(10 ** decimals);
