@@ -43,7 +43,7 @@ export const SingleFarmProvider = ({ pid, children }) => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(performance.now()), 60000);
+    const interval = setInterval(() => setTime(performance.now()), 30000);
     return () => {
       clearInterval(interval);
     };
@@ -55,7 +55,7 @@ export const SingleFarmProvider = ({ pid, children }) => {
 
   useEffect(() => {
     if (isInitGlobalStatsLoaded && dxs.dxsDecimals) {
-      updateFarmInfo(pid);
+      updateFarmInfo();
     }
   }, [
     isInitGlobalStatsLoaded,
@@ -66,7 +66,7 @@ export const SingleFarmProvider = ({ pid, children }) => {
   ]);
 
   useEffect(() => {
-    updateUserInfo(true);
+    updateUserInfo();
   }, [
     wallet.account,
     connectWallet.connected,
